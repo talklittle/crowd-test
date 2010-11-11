@@ -1,0 +1,31 @@
+<h1>New user</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.text_field :password %>
+  </p>
+  <p>
+    <%= f.label :testerscore %><br />
+    <%= f.text_field :testerscore %>
+  </p>
+  <p>
+    <%= f.label :evaluatorscore %><br />
+    <%= f.text_field :evaluatorscore %>
+  </p>
+  <p>
+    <%= f.label :requestorscore %><br />
+    <%= f.text_field :requestorscore %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', users_path %>

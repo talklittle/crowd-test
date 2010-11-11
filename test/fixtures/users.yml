@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  username: MyString
+  password: MyString
+  testerscore: 1
+  evaluatorscore: 1
+  requestorscore: 1
+
+two:
+  username: MyString
+  password: MyString
+  testerscore: 1
+  evaluatorscore: 1
+  requestorscore: 1
