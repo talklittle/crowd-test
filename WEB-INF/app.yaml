@@ -1,4 +1,4 @@
-application: application-id
+application: crowd-test
 version: 1
 runtime: jruby
 
