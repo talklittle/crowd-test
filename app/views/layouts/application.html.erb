@@ -11,7 +11,7 @@
             <table>
                 <tr>
                     <td>
-                        <%= link_to "Home", '#' %>
+                        <%= link_to "Home", root_path %>
                     </td>
                     <td>
                         <%= link_to "Tasks", '#' %>
@@ -25,7 +25,9 @@
                 </tr>
             </table>
         </div>
+
         <%= yield %>
+
     </body>
 </html>
 
