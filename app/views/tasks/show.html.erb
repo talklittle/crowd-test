@@ -1,0 +1,28 @@
+<p>
+  <b>Tested:</b>
+  <%=h @task.tested %>
+</p>
+
+<p>
+  <b>Expire date:</b>
+  <%=h @task.expire_date %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%=h @task.owner_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @task.description %>
+</p>
+
+<p>
+  <b>Duration minutes:</b>
+  <%=h @task.duration_minutes %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

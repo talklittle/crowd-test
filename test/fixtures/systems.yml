@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  owner_id: 1
+  cpu_mhz: 1
+  ram_mbytes: 1
+  os: MyString
+
+two:
+  owner_id: 1
+  cpu_mhz: 1
+  ram_mbytes: 1
+  os: MyString

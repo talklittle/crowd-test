@@ -4,18 +4,18 @@
   <tr>
     <th>Username</th>
     <th>Password</th>
-    <th>Testerscore</th>
-    <th>Evaluatorscore</th>
-    <th>Requestorscore</th>
+    <th>Tester score</th>
+    <th>Evaluator score</th>
+    <th>Requester score</th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
     <td><%=h user.username %></td>
     <td><%=h user.password %></td>
-    <td><%=h user.testerscore %></td>
-    <td><%=h user.evaluatorscore %></td>
-    <td><%=h user.requestorscore %></td>
+    <td><%=h user.tester_score %></td>
+    <td><%=h user.evaluator_score %></td>
+    <td><%=h user.requester_score %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>

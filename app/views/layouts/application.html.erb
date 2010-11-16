@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Ruby on Rails Tutorial Sample App | <%= @title %></title>
+    </head>
+    <body>
+        <div id="topnav">
+            <table>
+                <tr>
+                    <td>
+                        <%= link_to "Home", '#' %>
+                    </td>
+                    <td>
+                        <%= link_to "Login", '#' %>
+                    </td>
+                    <td>
+                        <%= link_to "Tasks", '#' %>
+                    </td>
+                    <td>
+                        <%= link_to "Profile", '#' %>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <%= yield %>
+    </body>
+</html>
+

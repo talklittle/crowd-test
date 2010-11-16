@@ -1,0 +1,28 @@
+<h1>Editing system</h1>
+
+<% form_for(@system) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :owner_id %><br />
+    <%= f.text_field :owner_id %>
+  </p>
+  <p>
+    <%= f.label :cpu_mhz %><br />
+    <%= f.text_field :cpu_mhz %>
+  </p>
+  <p>
+    <%= f.label :ram_mbytes %><br />
+    <%= f.text_field :ram_mbytes %>
+  </p>
+  <p>
+    <%= f.label :os %><br />
+    <%= f.text_field :os %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @system %> |
+<%= link_to 'Back', systems_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  owner_id: 1
+  speed_mbps: 1
+  type: MyString
+
+two:
+  owner_id: 1
+  speed_mbps: 1
+  type: MyString

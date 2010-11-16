@@ -1,0 +1,23 @@
+<p>
+  <b>Owner:</b>
+  <%=h @system.owner_id %>
+</p>
+
+<p>
+  <b>Cpu mhz:</b>
+  <%=h @system.cpu_mhz %>
+</p>
+
+<p>
+  <b>Ram mbytes:</b>
+  <%=h @system.ram_mbytes %>
+</p>
+
+<p>
+  <b>Os:</b>
+  <%=h @system.os %>
+</p>
+
+
+<%= link_to 'Edit', edit_system_path(@system) %> |
+<%= link_to 'Back', systems_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tested: false
+  expire_date: 2010-11-15
+  owner_id: 1
+  description: MyString
+  duration_minutes: 1
+
+two:
+  tested: false
+  expire_date: 2010-11-15
+  owner_id: 1
+  description: MyString
+  duration_minutes: 1
