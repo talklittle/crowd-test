@@ -1,6 +1,8 @@
 class User
   include DataMapper::Resource
   storage_names[:default] = "User"
+
+  before_save :encrypt_password
   
   property :id,              Serial
   property :username,        String,        :required => true, :length => 500
@@ -19,5 +21,20 @@ class User
     return nil  if user.nil?
     return user if user.has_password?(submitted_password)
   end
+
+  def remember_me!
+    self.remember_token = encrypt("#{salt}--#{id}--#{Time.now.utc}")
+    save_without_validation
+  end
   
+
+  private
+
+    def encrypt_password
+      unless password.nil?
+        self.salt = make_salt
+        self.encrypted_password = encrypt(password)
+      end
+    end
+
 end

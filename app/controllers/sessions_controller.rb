@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  helper :all
+  include SessionsHelper
+
   def new
   end
 
@@ -10,7 +13,8 @@ class SessionsController < ApplicationController
       @title = "Sign in"
       render 'new'
     else
-      # Sign the user in and redirect to the user's show page.
+      sign_in user
+      redirect user
     end
   end
 
