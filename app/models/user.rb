@@ -4,13 +4,16 @@ class User
 
   before_save :encrypt_password
   
-  property :id,              Serial
-  property :username,        String,        :required => true, :length => 500
-  property :password,        String,        :required => true, :length => 500
-  property :tester_score,    Integer,       :required => true
-  property :evaluator_score, Integer,       :required => true
-  property :requester_score, Integer,       :required => true
+  property :id,                  Serial
+  property :username,            String,        :required => true, :length => 500
+  property :encrypted_password,  String,        :required => true, :length => 500
+  property :salt,                String,        :required => true, :length => 500
+  property :remember_token,      String,        :required => true, :length => 500
+  property :tester_score,        Integer,       :required => true
+  property :evaluator_score,     Integer,       :required => true
+  property :requester_score,     Integer,       :required => true
   timestamps :at 
+
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
