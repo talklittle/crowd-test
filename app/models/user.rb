@@ -3,6 +3,8 @@ class User
   storage_names[:default] = "User"
 
   before_save :encrypt_password
+
+  attr_accessible :name, :email, :password, :password_confirmation
   
   property :id,                  Serial
   property :username,            String,        :required => true, :length => 500
