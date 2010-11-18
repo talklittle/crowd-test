@@ -40,7 +40,6 @@ ActionController::Routing::Routes.draw do |map|
   #     admin.resources :products
   #   end
   map.register  '/register',  :controller => 'users',    :action => 'new'
-  map.profile   '/profile',   :controller => 'users',    :action => 'edit'
   map.tasks     '/tasks',     :controller => 'tasks',    :action => 'index'
   map.about     '/about',     :controller => 'pages',    :action => 'about'
   map.contact   '/contact',   :controller => 'pages',    :action => 'contact'

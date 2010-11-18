@@ -40,6 +40,9 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
+    params[:user][:tester_score] = 0
+    params[:user][:evaluator_score] = 0
+    params[:user][:requester_score] = 0
     @user = User.new(params[:user])
 
     if @user.save
