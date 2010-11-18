@@ -2,20 +2,35 @@ class User
   include DataMapper::Resource
   storage_names[:default] = "User"
 
-  before_save :encrypt_password
+  before :save, :encrypt_password
 
-  attr_accessible :name, :email, :password, :password_confirmation
+  #attr_accessible :name, :email, :password, :password_confirmation
   
   property :id,                  Serial
-  property :username,            String,        :required => true, :length => 500
-  property :encrypted_password,  String,        :required => true, :length => 500
-  property :salt,                String,        :required => true, :length => 500
-  property :remember_token,      String,        :required => true, :length => 500
+  property :email,               String,        :required => true,  :length => 500
+  property :encrypted_password,  String,        :required => false, :length => 500
+  property :salt,                String,        :required => false, :length => 500
+  property :remember_token,      String,        :required => false, :length => 500
   property :tester_score,        Integer,       :required => true
   property :evaluator_score,     Integer,       :required => true
   property :requester_score,     Integer,       :required => true
   timestamps :at 
 
+  def password=(password)
+    @password = password
+  end
+
+  def password
+    @password
+  end
+
+  def password_confirmation(password)
+    @password_confirmation = password
+  end
+
+  def password_confirmation
+    @password_confirmation
+  end
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
@@ -29,7 +44,7 @@ class User
 
   def remember_me!
     self.remember_token = encrypt("#{salt}--#{id}--#{Time.now.utc}")
-    save_without_validation
+    save
   end
   
 
@@ -41,5 +56,18 @@ class User
         self.encrypted_password = encrypt(password)
       end
     end
+
+    def encrypt(string)
+      secure_hash("#{salt}#{string}")
+    end
+
+    def make_salt
+      secure_hash("#{Time.now.utc}#{password}")
+    end
+
+    def secure_hash(string)
+      Digest::SHA2.hexdigest(string)
+    end
+    
 
 end

@@ -42,19 +42,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    respond_to do |format|
-      if @user.save
-        sign_in @user
-        flash[:success] = "Welcome to CrowdTest!"
-        redirect_to @user
-        #format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        #format.xml  { render :xml => @user, :status => :created, :location => @user }
-      else
-        @title = 'Sign up'
-        render 'new'
-        #format.html { render :action => "new" }
-        #format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
+    if @user.save
+      sign_in @user
+      flash[:success] = "Welcome to CrowdTest!"
+      redirect_to @user
+    else
+      @title = 'Sign up'
+      render 'new'
     end
   end
 

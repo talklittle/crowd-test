@@ -2,8 +2,7 @@
 
 <table>
   <tr>
-    <th>Username</th>
-    <th>Password</th>
+    <th>Email</th>
     <th>Tester score</th>
     <th>Evaluator score</th>
     <th>Requester score</th>
@@ -11,8 +10,7 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%=h user.username %></td>
-    <td><%=h user.password %></td>
+    <td><%=h user.email %></td>
     <td><%=h user.tester_score %></td>
     <td><%=h user.evaluator_score %></td>
     <td><%=h user.requester_score %></td>

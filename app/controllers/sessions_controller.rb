@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  helper :all
-  include SessionsHelper
 
   def new
   end
