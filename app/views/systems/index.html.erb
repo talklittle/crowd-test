@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-    <th>Owner</th>
     <th>Cpu mhz</th>
     <th>Ram mbytes</th>
     <th>Os</th>
@@ -10,7 +9,6 @@
 
 <% @systems.each do |system| %>
   <tr>
-    <td><%=h system.owner_id %></td>
     <td><%=h system.cpu_mhz %></td>
     <td><%=h system.ram_mbytes %></td>
     <td><%=h system.os %></td>

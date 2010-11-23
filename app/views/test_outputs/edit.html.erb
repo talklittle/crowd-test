@@ -1,0 +1,20 @@
+<h1>Editing test_output</h1>
+
+<% form_for(@test_output) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :data %><br />
+    <%= f.text_field :data %>
+  </p>
+  <p>
+    <%= f.label :size_bytes %><br />
+    <%= f.text_field :size_bytes %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @test_output %> |
+<%= link_to 'Back', test_outputs_path %>

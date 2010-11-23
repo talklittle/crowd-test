@@ -3,8 +3,10 @@ class Network
   storage_names[:default] = "Network"
   
   property :id,         Serial
-  property :owner_id,   Integer,       :required => true
   property :speed_mbps, Integer,       :required => true
   property :type,       String,        :required => true, :length => 500
   timestamps :at 
+
+  belongs_to :user
+
 end

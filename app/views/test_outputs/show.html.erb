@@ -1,0 +1,13 @@
+<p>
+  <b>Data:</b>
+  <%=h @test_output.data %>
+</p>
+
+<p>
+  <b>Size bytes:</b>
+  <%=h @test_output.size_bytes %>
+</p>
+
+
+<%= link_to 'Edit', edit_test_output_path(@test_output) %> |
+<%= link_to 'Back', test_outputs_path %>

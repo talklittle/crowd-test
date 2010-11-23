@@ -1,0 +1,38 @@
+<h1>Listing scripts</h1>
+
+<%= form_for(@script) do |f| %>
+  <p>
+    <%= f.label :search %><br />
+    <%= f.text_field :search %>
+  </p>
+
+  <!-- FIXME get distinct platforms -->
+  <% @scripts.each do |script| %>
+    <%= f.check_box script.platform %>
+  <% end %>
+
+
+<% end %>
+
+<table>
+  <tr>
+    <th>Language</th>
+    <th>Size bytes</th>
+    <th>Code</th>
+  </tr>
+
+<% @scripts.each do |script| %>
+  <tr>
+    <td><%=h script.language %></td>
+    <td><%=h script.size_bytes %></td>
+    <td><%=h script.code %></td>
+    <td><%= link_to 'Show', script %></td>
+    <td><%= link_to 'Edit', edit_script_path(script) %></td>
+    <td><%= link_to 'Destroy', script, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New script', new_script_path %>

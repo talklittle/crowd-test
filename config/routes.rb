@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :comments
+
+  map.resources :test_outputs
+
+  map.resources :scripts
+
   map.resources :systems
 
   map.resources :networks

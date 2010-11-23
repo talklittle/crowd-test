@@ -1,0 +1,18 @@
+<p>
+  <b>Language:</b>
+  <%=h @script.language %>
+</p>
+
+<p>
+  <b>Size bytes:</b>
+  <%=h @script.size_bytes %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%=h @script.code %>
+</p>
+
+
+<%= link_to 'Edit', edit_script_path(@script) %> |
+<%= link_to 'Back', scripts_path %>

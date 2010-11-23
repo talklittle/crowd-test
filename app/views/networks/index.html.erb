@@ -2,14 +2,12 @@
 
 <table>
   <tr>
-    <th>Owner</th>
     <th>Speed mbps</th>
     <th>Type</th>
   </tr>
 
 <% @networks.each do |network| %>
   <tr>
-    <td><%=h network.owner_id %></td>
     <td><%=h network.speed_mbps %></td>
     <td><%=h network.type %></td>
     <td><%= link_to 'Show', network %></td>
