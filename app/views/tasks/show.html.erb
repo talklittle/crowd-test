@@ -18,6 +18,11 @@
   <%=h @task.duration_minutes %>
 </p>
 
+<p>
+  <b>Associated scripts:</b>
+  <%= link_to "#{@task.scripts.length} associated scripts.", task_scripts_path(@task) %>
+</p>
+
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>

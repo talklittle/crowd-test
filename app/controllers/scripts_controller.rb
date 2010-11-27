@@ -9,9 +9,16 @@ class ScriptsController < ApplicationController
       @task = Task.find(params[:task_id])
     end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @scripts }
+    if @task.nil?
+      respond_to do |format|
+        format.html { render 'scripts/empty' }
+        format.xml  { render :xml => @scripts }
+      end
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @scripts }
+      end
     end
   end
 

@@ -1,0 +1,13 @@
+<h1>No scripts</h1>
+
+<% if @task.nil? %>
+  <p>Invalid Task ID.</p>
+
+  <%= link_to 'Back', tasks_path %>
+
+<% else %>
+  <p>There are no scripts associated with Task <%= @task.id %>.</p>
+
+  <%= link_to 'Back', task_scripts_path %>
+
+<% end %>
