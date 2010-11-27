@@ -1,9 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :taggings
+
+  map.resources :tags
+
   map.resources :comments
 
   map.resources :test_outputs
-
-  map.resources :scripts
 
   map.resources :systems
 
@@ -11,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
 
-  map.resources :tasks
+  map.resources :tasks, :has_many => [:scripts]
 
   map.resources :sessions, :only => [:new, :create, :destroy]
 

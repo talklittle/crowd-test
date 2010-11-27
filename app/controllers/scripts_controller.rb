@@ -1,8 +1,13 @@
 class ScriptsController < ApplicationController
-  # GET /scripts
-  # GET /scripts.xml
+  # GET /tasks/1/scripts
+  # GET /tasks/1/scripts.xml
   def index
-    @scripts = Script.all
+    if params[:task_id].nil?
+      @scripts = Script.all
+    else
+      @scripts = Script.all(:task => { :id => params[:task_id] })
+      @task = Task.find(params[:task_id])
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,10 +15,11 @@ class ScriptsController < ApplicationController
     end
   end
 
-  # GET /scripts/1
-  # GET /scripts/1.xml
+  # GET /tasks/1/scripts/1
+  # GET /tasks/1/scripts/1.xml
   def show
     @script = Script.find(params[:id])
+    @task = Task.find(params[:task_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,10 +27,11 @@ class ScriptsController < ApplicationController
     end
   end
 
-  # GET /scripts/new
-  # GET /scripts/new.xml
+  # GET /tasks/1/scripts/new
+  # GET /tasks/1/scripts/new.xml
   def new
     @script = Script.new
+    @task = Task.find(params[:task_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,20 +39,23 @@ class ScriptsController < ApplicationController
     end
   end
 
-  # GET /scripts/1/edit
+  # GET /tasks/1/scripts/1/edit
   def edit
     @script = Script.find(params[:id])
+    @task = Task.find(params[:task_id])
   end
 
-  # POST /scripts
-  # POST /scripts.xml
+  # POST /tasks/1/scripts
+  # POST /tasks/1/scripts.xml
   def create
-    @script = Script.new(params[:script])
+    #@script = Script.new(params[:script])
+    task = Task.find(params[:task_id])
+    @script = task.scripts.new(params[:script])
 
     respond_to do |format|
       if @script.save
-        format.html { redirect_to(@script, :notice => 'Script was successfully created.') }
-        format.xml  { render :xml => @script, :status => :created, :location => @script }
+        format.html { redirect_to(task_script_url(task, @script), :notice => 'Script was successfully created.') }
+        format.xml  { render :xml => @script, :status => :created, :location => [task, @script] }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @script.errors, :status => :unprocessable_entity }
@@ -53,14 +63,15 @@ class ScriptsController < ApplicationController
     end
   end
 
-  # PUT /scripts/1
-  # PUT /scripts/1.xml
+  # PUT /tasks/1/scripts/1
+  # PUT /tasks/1/scripts/1.xml
   def update
     @script = Script.find(params[:id])
+    task = Task.find(params[:task_id])
 
     respond_to do |format|
       if @script.update_attributes(params[:script])
-        format.html { redirect_to(@script, :notice => 'Script was successfully updated.') }
+        format.html { redirect_to(task_script_url(task, @script), :notice => 'Script was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -69,14 +80,16 @@ class ScriptsController < ApplicationController
     end
   end
 
-  # DELETE /scripts/1
-  # DELETE /scripts/1.xml
+  # DELETE /tasks/1/scripts/1
+  # DELETE /tasks/1/scripts/1.xml
   def destroy
     @script = Script.find(params[:id])
+    task = Task.find(params[:task_id])
+    url = task_scripts_url(task)
     @script.destroy
 
     respond_to do |format|
-      format.html { redirect_to(scripts_url) }
+      format.html { redirect_to(url) }
       format.xml  { head :ok }
     end
   end

@@ -1,6 +1,6 @@
 <h1>Editing script</h1>
 
-<% form_for(@script) do |f| %>
+<% form_for(:task, @script) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -8,17 +8,13 @@
     <%= f.text_field :language %>
   </p>
   <p>
-    <%= f.label :size_bytes %><br />
-    <%= f.text_field :size_bytes %>
-  </p>
-  <p>
     <%= f.label :code %><br />
-    <%= f.text_field :code %>
+    <%= f.text_area(:code, :cols => 80, :rows => 40) %>
   </p>
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @script %> |
-<%= link_to 'Back', scripts_path %>
+<%= link_to 'Show', task_script_path(@task, @script) %> |
+<%= link_to 'Back', task_scripts_path %>

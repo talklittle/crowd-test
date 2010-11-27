@@ -16,12 +16,12 @@ class User
   property :requester_score,     Integer,       :required => true
   timestamps :at 
 
-  has n, :network
-  has n, :system
-  has n, :task
-  has n, :script
-  has n, :comment
-  has n, :test_output
+  has n, :networks
+  has n, :systems
+  has n, :tasks
+  has n, :scripts
+  has n, :comments
+  has n, :test_outputs
 
   def password=(password)
     @password = password

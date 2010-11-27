@@ -24,7 +24,8 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.xml
   def new
-    @task = Task.new
+    #@task = Task.new
+    @task = current_user.tasks.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +41,8 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.xml
   def create
-    @task = Task.new(params[:task])
+    #@task = Task.new(params[:task])
+    @task = current_user.tasks.new(params[:task])
 
     respond_to do |format|
       if @task.save
@@ -80,4 +82,10 @@ class TasksController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # GET /tasks/search
+  def search
+    @tasks = Task.search params[:search]
+  end
+
 end
