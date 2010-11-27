@@ -20,7 +20,11 @@
 
 <p>
   <b>Associated scripts:</b>
-  <%= link_to "#{@task.scripts.length} associated scripts.", task_scripts_path(@task) %>
+  <% if @task.scripts.length == 0 %>
+    <%= link_to "No scripts yet -- add one", new_task_scripts_path(@task) %>.
+  <% else %>
+    <%= link_to "#{@task.scripts.length} associated scripts", task_scripts_path(@task) %>.
+  <% end %>
 </p>
 
 
