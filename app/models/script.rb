@@ -13,9 +13,6 @@ class Script
   belongs_to :task
   has 1, :language
 
-  acts_as_taggable
-  acts_as_taggable_on :os
-
 
   private
 
