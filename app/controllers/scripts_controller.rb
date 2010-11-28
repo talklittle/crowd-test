@@ -55,9 +55,17 @@ class ScriptsController < ApplicationController
   # POST /tasks/1/scripts
   # POST /tasks/1/scripts.xml
   def create
-    #@script = Script.new(params[:script])
     task = Task.find(params[:task_id])
+    lang_str = params[:script].delete(:language)
+    language = Language.find({:name.like => :lang_str})
+
     @script = task.scripts.new(params[:script])
+
+    # set the language
+    if language.nil?
+      language = Language.new({:name => :lang_str, :version => "Unspecified"})
+    end
+    @script.language = language
 
     respond_to do |format|
       if @script.save
