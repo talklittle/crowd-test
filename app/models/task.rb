@@ -7,17 +7,17 @@ class Task
   property :expire_date,      Date,          :required => true
   property :description,      String,        :required => true, :length => 500
   property :duration_minutes, Integer,       :required => true
+
+  property :tag_ids,          List
   timestamps :at 
 
   belongs_to :user
   has n, :scripts
 
-  has n, :tag_tasks
-  has n, :tags, :through => :tag_tasks
 
-  def taghelp
+  def tags
     tagstr = ""
-    self.tags.each do |tt|
+    Tag.all(:id => tag_ids).each do |tt|
       if tagstr == ""
         tagstr = tt.name
       else
@@ -27,11 +27,8 @@ class Task
     tagstr
   end
 
-  def taghelp=(newtags)
-    # destroy old tags first
-    self.tags.each do |tag|
-      self.tag_tasks.first(:tag => tag).destroy
-    end
+  def tags=(newtags)
+    taglist = []
     # associate new tags
     ts = newtags.split(/,/)
     ts.each do |t|
@@ -40,8 +37,9 @@ class Task
       if tag.nil?
         tag = Tag.create({:name => t})
       end
-      TagTask.create(:tag => tag, :task => self)
+      taglist << tag.id
     end
+    self.tag_ids = taglist
   end
 
 end

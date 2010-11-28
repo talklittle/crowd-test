@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :tag_tasks
-
   map.resources :tags
 
   map.resources :languages

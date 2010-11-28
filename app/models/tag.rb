@@ -7,6 +7,7 @@ class Tag
   property :type, String,        :required => false, :length => 500
   timestamps :at 
 
-  has n, :tag_tasks
-  has n, :tasks, :through => :tag_tasks
+  def tasks
+    Task.all(:tag_ids => id)
+  end
 end
