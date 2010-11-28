@@ -75,7 +75,9 @@ class TasksController < ApplicationController
   # DELETE /tasks/1.xml
   def destroy
     @task = Task.find(params[:id])
-    @task.destroy
+    if @task.user == current_user
+      @task.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(tasks_url) }
