@@ -12,8 +12,6 @@ class Task
   belongs_to :user
   has n, :scripts
 
-  acts_as_taggable
-  acts_as_taggable_on :os
-
+  has_tags_on :tags, :operating_systems
 
 end

@@ -19,6 +19,11 @@
 </p>
 
 <p>
+  <b>OSes:</b>
+  <%=h @task.operating_system_collection %>
+</p>
+
+<p>
   <b>Associated scripts:</b>
   <% if @task.scripts.length == 0 %>
     <%= link_to "No scripts yet -- add one", new_task_scripts_path(@task) %>.
