@@ -1,12 +1,14 @@
 <h1>Editing script</h1>
 
-<% form_for([@task, @script]) do |f| %>
+<% form_for([@task, @script], :url => task_script_url(@task, @script)) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :language %><br />
-    <%= f.text_field :language %>
-  </p>
+  <% f.fields_for @script.language do |language_fields| %>
+    <p>
+      <%= language_fields.label :name, "Language" %><br />
+      <%= language_fields.text_field :name %>
+    </p>
+  <% end %>
   <p>
     <%= f.label :code %><br />
     <%= f.text_area(:code, :cols => 80, :rows => 40) %>

@@ -55,22 +55,22 @@ class ScriptsController < ApplicationController
   # POST /tasks/1/scripts
   # POST /tasks/1/scripts.xml
   def create
-    task = Task.find(params[:task_id])
-    lang_str = params[:script].delete(:language)
-    language = Language.find({:name.like => :lang_str})
+    @task = Task.find(params[:task_id])
+    lang_info = params[:script].delete(:language)
 
-    @script = task.scripts.new(params[:script])
+    @script = @task.scripts.new(params[:script])
 
     # set the language
+    language = Language.find(lang_info)
     if language.nil?
-      language = Language.new({:name => :lang_str, :version => "Unspecified"})
+      language = Language.create(lang_info)
     end
     @script.language = language
 
     respond_to do |format|
       if @script.save
-        format.html { redirect_to(task_script_url(task, @script), :notice => 'Script was successfully created.') }
-        format.xml  { render :xml => @script, :status => :created, :location => [task, @script] }
+        format.html { redirect_to(task_script_url(@task, @script), :notice => 'Script was successfully created.') }
+        format.xml  { render :xml => @script, :status => :created, :location => [@task, @script] }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @script.errors, :status => :unprocessable_entity }
@@ -82,11 +82,19 @@ class ScriptsController < ApplicationController
   # PUT /tasks/1/scripts/1.xml
   def update
     @script = Script.find(params[:id])
-    task = Task.find(params[:task_id])
+    @task = Task.find(params[:task_id])
+    lang_info = params[:script].delete(:language)
+
+    # set the language
+    language = Language.find(lang_info)
+    if language.nil?
+      language = Language.create(lang_info)
+    end
+    @script.language = language
 
     respond_to do |format|
       if @script.update_attributes(params[:script])
-        format.html { redirect_to(task_script_url(task, @script), :notice => 'Script was successfully updated.') }
+        format.html { redirect_to(task_script_url(@task, @script), :notice => 'Script was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

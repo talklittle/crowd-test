@@ -3,7 +3,7 @@ class Task
   storage_names[:default] = "Task"
   
   property :id,               Serial
-  property :tested,           Boolean,       :required => true
+  property :tested,           Boolean,       :required => false, :default => false
   property :expire_date,      Date,          :required => true
   property :description,      String,        :required => true, :length => 500
   property :duration_minutes, Integer,       :required => true

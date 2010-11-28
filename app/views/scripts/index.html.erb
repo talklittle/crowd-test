@@ -9,7 +9,7 @@
 
 <% @scripts.each do |script| %>
   <tr>
-    <td><%=h script.language %></td>
+    <td><%=h script.language.name %></td>
     <td><%=h script.size_bytes %></td>
     <td><%=h script.code %></td>
     <td><%= link_to 'Show', task_script_path(@task, script) %></td>
