@@ -3,7 +3,7 @@
 <% form_for([@task, @script], :url => task_scripts_url(@task)) do |f| %>
   <%= f.error_messages %>
 
-  <% f.fields_for @script.language do |language_fields| %>
+  <% f.fields_for :language do |language_fields| %>
     <p>
       <%= language_fields.label :name, "Language" %><br />
       <%= language_fields.text_field :name %>
