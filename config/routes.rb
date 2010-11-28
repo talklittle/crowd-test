@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :languages
 
+  map.resources :os
+
   map.resources :comments
 
   map.resources :test_outputs
