@@ -1,0 +1,2 @@
+module TestOutputVotesHelper
+end

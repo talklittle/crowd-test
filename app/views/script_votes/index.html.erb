@@ -1,0 +1,18 @@
+<h1>Listing script_votes</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @script_votes.each do |script_vote| %>
+  <tr>
+    <td><%= link_to 'Show', script_vote %></td>
+    <td><%= link_to 'Edit', edit_script_vote_path(script_vote) %></td>
+    <td><%= link_to 'Destroy', script_vote, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New script_vote', new_script_vote_path %>

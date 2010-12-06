@@ -1,0 +1,18 @@
+<h1>Listing test_output_votes</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @test_output_votes.each do |test_output_vote| %>
+  <tr>
+    <td><%= link_to 'Show', test_output_vote %></td>
+    <td><%= link_to 'Edit', edit_test_output_vote_path(test_output_vote) %></td>
+    <td><%= link_to 'Destroy', test_output_vote, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New test_output_vote', new_test_output_vote_path %>
