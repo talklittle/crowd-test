@@ -13,7 +13,7 @@ class SystemsController < ApplicationController
   # GET /systems/1
   # GET /systems/1.xml
   def show
-    @system = System.find(params[:id])
+    @system = System.get(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class SystemsController < ApplicationController
 
   # GET /systems/1/edit
   def edit
-    @system = System.find(params[:id])
+    @system = System.get(params[:id])
   end
 
   # POST /systems
@@ -56,7 +56,7 @@ class SystemsController < ApplicationController
   # PUT /systems/1
   # PUT /systems/1.xml
   def update
-    @system = System.find(params[:id])
+    @system = System.get(params[:id])
 
     respond_to do |format|
       if @system.update_attributes(params[:system])
@@ -72,7 +72,7 @@ class SystemsController < ApplicationController
   # DELETE /systems/1
   # DELETE /systems/1.xml
   def destroy
-    @system = System.find(params[:id])
+    @system = System.get(params[:id])
     @system.destroy
 
     respond_to do |format|

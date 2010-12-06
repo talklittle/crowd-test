@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.xml
   def show
-    @task = Task.find(params[:id])
+    @task = Task.get(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,7 +35,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @task = Task.find(params[:id])
+    @task = Task.get(params[:id])
   end
 
   # POST /tasks
@@ -58,7 +58,7 @@ class TasksController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.xml
   def update
-    @task = Task.find(params[:id])
+    @task = Task.get(params[:id])
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
@@ -74,7 +74,7 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.xml
   def destroy
-    @task = Task.find(params[:id])
+    @task = Task.get(params[:id])
     if @task.user == current_user
       @task.destroy
     end

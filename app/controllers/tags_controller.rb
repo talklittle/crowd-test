@@ -13,7 +13,7 @@ class TagsController < ApplicationController
   # GET /tags/1
   # GET /tags/1.xml
   def show
-    @tag = Tag.find(params[:id])
+    @tag = Tag.get(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class TagsController < ApplicationController
 
   # GET /tags/1/edit
   def edit
-    @tag = Tag.find(params[:id])
+    @tag = Tag.get(params[:id])
   end
 
   # POST /tags
@@ -56,7 +56,7 @@ class TagsController < ApplicationController
   # PUT /tags/1
   # PUT /tags/1.xml
   def update
-    @tag = Tag.find(params[:id])
+    @tag = Tag.get(params[:id])
 
     respond_to do |format|
       if @tag.update_attributes(params[:tag])
@@ -72,7 +72,7 @@ class TagsController < ApplicationController
   # DELETE /tags/1
   # DELETE /tags/1.xml
   def destroy
-    @tag = Tag.find(params[:id])
+    @tag = Tag.get(params[:id])
     @tag.destroy
 
     respond_to do |format|

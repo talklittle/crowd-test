@@ -6,7 +6,7 @@ class ScriptsController < ApplicationController
       @scripts = Script.all
     else
       @scripts = Script.all(:task => { :id => params[:task_id] })
-      @task = Task.find(params[:task_id])
+      @task = Task.get(params[:task_id])
     end
 
     if @task.nil?
@@ -25,8 +25,8 @@ class ScriptsController < ApplicationController
   # GET /tasks/1/scripts/1
   # GET /tasks/1/scripts/1.xml
   def show
-    @script = Script.find(params[:id])
-    @task = Task.find(params[:task_id])
+    @script = Script.get(params[:id])
+    @task = Task.get(params[:task_id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +38,7 @@ class ScriptsController < ApplicationController
   # GET /tasks/1/scripts/new.xml
   def new
     @script = Script.new
-    @task = Task.find(params[:task_id])
+    @task = Task.get(params[:task_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,20 +48,20 @@ class ScriptsController < ApplicationController
 
   # GET /tasks/1/scripts/1/edit
   def edit
-    @script = Script.find(params[:id])
-    @task = Task.find(params[:task_id])
+    @script = Script.get(params[:id])
+    @task = Task.get(params[:task_id])
   end
 
   # POST /tasks/1/scripts
   # POST /tasks/1/scripts.xml
   def create
-    @task = Task.find(params[:task_id])
+    @task = Task.get(params[:task_id])
     lang_info = params[:script].delete(:language)
 
     @script = @task.scripts.new(params[:script])
 
     # set the language
-    language = Language.find(lang_info)
+    language = Language.get(lang_info)
     if language.nil?
       language = Language.create(lang_info)
     end
@@ -81,12 +81,12 @@ class ScriptsController < ApplicationController
   # PUT /tasks/1/scripts/1
   # PUT /tasks/1/scripts/1.xml
   def update
-    @script = Script.find(params[:id])
-    @task = Task.find(params[:task_id])
+    @script = Script.get(params[:id])
+    @task = Task.get(params[:task_id])
     lang_info = params[:script].delete(:language)
 
     # set the language
-    language = Language.find(lang_info)
+    language = Language.get(lang_info)
     if language.nil?
       language = Language.create(lang_info)
     end
@@ -106,8 +106,8 @@ class ScriptsController < ApplicationController
   # DELETE /tasks/1/scripts/1
   # DELETE /tasks/1/scripts/1.xml
   def destroy
-    @script = Script.find(params[:id])
-    task = Task.find(params[:task_id])
+    @script = Script.get(params[:id])
+    task = Task.get(params[:task_id])
     url = task_scripts_url(task)
     @script.destroy
 

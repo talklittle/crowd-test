@@ -13,7 +13,7 @@ class NetworksController < ApplicationController
   # GET /networks/1
   # GET /networks/1.xml
   def show
-    @network = Network.find(params[:id])
+    @network = Network.get(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class NetworksController < ApplicationController
 
   # GET /networks/1/edit
   def edit
-    @network = Network.find(params[:id])
+    @network = Network.get(params[:id])
   end
 
   # POST /networks
@@ -56,7 +56,7 @@ class NetworksController < ApplicationController
   # PUT /networks/1
   # PUT /networks/1.xml
   def update
-    @network = Network.find(params[:id])
+    @network = Network.get(params[:id])
 
     respond_to do |format|
       if @network.update_attributes(params[:network])
@@ -72,7 +72,7 @@ class NetworksController < ApplicationController
   # DELETE /networks/1
   # DELETE /networks/1.xml
   def destroy
-    @network = Network.find(params[:id])
+    @network = Network.get(params[:id])
     @network.destroy
 
     respond_to do |format|

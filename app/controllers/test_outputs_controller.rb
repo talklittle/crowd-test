@@ -13,7 +13,7 @@ class TestOutputsController < ApplicationController
   # GET /test_outputs/1
   # GET /test_outputs/1.xml
   def show
-    @test_output = TestOutput.find(params[:id])
+    @test_output = TestOutput.get(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class TestOutputsController < ApplicationController
 
   # GET /test_outputs/1/edit
   def edit
-    @test_output = TestOutput.find(params[:id])
+    @test_output = TestOutput.get(params[:id])
   end
 
   # POST /test_outputs
@@ -56,7 +56,7 @@ class TestOutputsController < ApplicationController
   # PUT /test_outputs/1
   # PUT /test_outputs/1.xml
   def update
-    @test_output = TestOutput.find(params[:id])
+    @test_output = TestOutput.get(params[:id])
 
     respond_to do |format|
       if @test_output.update_attributes(params[:test_output])
@@ -72,7 +72,7 @@ class TestOutputsController < ApplicationController
   # DELETE /test_outputs/1
   # DELETE /test_outputs/1.xml
   def destroy
-    @test_output = TestOutput.find(params[:id])
+    @test_output = TestOutput.get(params[:id])
     @test_output.destroy
 
     respond_to do |format|

@@ -33,7 +33,8 @@ class Task
     ts = newtags.split(/,/)
     ts.each do |t|
       t.strip!
-      tag = Tag.find({:name.like => t})
+      t.downcase!
+      tag = Tag.first({:name => t})
       if tag.nil?
         tag = Tag.create({:name => t})
       end
