@@ -8,6 +8,19 @@
   <%=h @test_output.size_bytes %>
 </p>
 
+<p>
+  <b>Upvotes:</b>
+  <%=h @test_output.num_upvotes %>
+</p>
+
+
+<p id="upvote">
+<% if signed_in? and not @test_output.upvoted?(current_user) %>
+  <%= link_to_remote 'Vote up', :update => "upvote",
+    :url => { :action => "upvote", :id => @test_output.id, :user_id => current_user.id } %>
+<% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_test_output_path(@test_output) %> |
 <%= link_to 'Back', test_outputs_path %>

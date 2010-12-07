@@ -80,4 +80,14 @@ class TestOutputsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def upvote
+    test_output = TestOutput.get(params[:id])
+    user = User.get(params[:user_id])
+    test_output.upvote(user)
+
+    if request.xhr?
+      render :text => "Upvoted"
+    end
+  end
 end

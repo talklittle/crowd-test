@@ -13,6 +13,17 @@
   <%=h @script.code %>
 </p>
 
+<p>
+  <b>Upvotes:</b>
+  <%=h @script.num_upvotes %>
+</p>
+
+<p id="upvote">
+<% if signed_in? and not @script.upvoted?(current_user) %>
+  <%= link_to_remote 'Vote up', :update => "upvote",
+    :url => { :controller => "script", :action => "upvote", :id => @script.id, :user_id => current_user.id } %>
+<% end %>
+</p>
 
 <%= link_to 'Edit', edit_task_script_path(@task, @script) %> |
 <%= link_to 'Back', task_scripts_path %>

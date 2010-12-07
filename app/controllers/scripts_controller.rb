@@ -116,4 +116,14 @@ class ScriptsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def upvote
+    script = Script.get(params[:id])
+    user = User.get(params[:user_id])
+    script.upvote(user)
+
+    if request.xhr?
+      render :text => "Upvoted"
+    end
+  end
 end

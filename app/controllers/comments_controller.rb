@@ -80,4 +80,14 @@ class CommentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def upvote
+    comment = Comment.get(params[:id])
+    user = User.get(params[:user_id])
+    comment.upvote(user)
+
+    if request.xhr?
+      render :text => "Upvoted"
+    end
+  end
 end

@@ -1,6 +1,18 @@
 <p>
-  <b>Body:</b>
+  Comment by: <b><%=h @comment.user.name %></b>
   <%=h @comment.body %>
+</p>
+
+<p>
+  <b>Upvotes:</b>
+  <%=h @comment.num_upvotes %>
+</p>
+
+<p id="upvote">
+<% if signed_in? and not @comment.upvoted?(current_user) %>
+  <%= link_to_remote 'Vote up', :update => "upvote",
+    :url => { :action => "upvote", :id => @comment.id, :user_id => current_user.id } %>
+<% end %>
 </p>
 
 
