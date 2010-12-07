@@ -9,9 +9,13 @@
 </p>
 
 <p id="upvote">
-<% if signed_in? and not @comment.upvoted?(current_user) %>
-  <%= link_to_remote 'Vote up', :update => "upvote",
-    :url => { :action => "upvote", :id => @comment.id, :user_id => current_user.id } %>
+<% if signed_in? %>
+  <% if @comment.upvoted?(current_user) %>
+    Upvoted
+  <% else %>
+    <%= link_to_remote 'Vote up', :update => "upvote",
+      :url => { :action => "upvote", :id => @comment.id, :user_id => current_user.id } %>
+  <% end %>
 <% end %>
 </p>
 

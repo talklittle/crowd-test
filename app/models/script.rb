@@ -20,20 +20,18 @@ class Script
   end
 
   def upvoted?(user)
-    !user.nil? and !self.upvote_user_ids.nil? and self.upvote_user_ids.includes?(user)
+    !user.nil? and !self.upvote_user_ids.nil? and self.upvote_user_ids.include?(user.id)
   end
 
   def upvote(user)
     if user.nil?
       return
     end
-    if self.upvote_user_ids.include?(user.id)
-      return
-    end
-
     if self.upvote_user_ids.nil?
       self.upvote_user_ids = []
     end
+    return if self.upvote_user_ids.include?(user.id)
+
     self.upvote_user_ids << user.id
     save
   end

@@ -19,9 +19,13 @@
 </p>
 
 <p id="upvote">
-<% if signed_in? and not @script.upvoted?(current_user) %>
-  <%= link_to_remote 'Vote up', :update => "upvote",
-    :url => { :controller => "script", :action => "upvote", :id => @script.id, :user_id => current_user.id } %>
+<% if signed_in? %>
+  <% if @script.upvoted?(current_user) %>
+    Upvoted
+  <% else %>
+    <%= link_to_remote 'Vote up', :update => "upvote",
+      :url => { :controller => "scripts", :action => "upvote", :id => @script.id, :user_id => current_user.id } %>
+  <% end %>
 <% end %>
 </p>
 
