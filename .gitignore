@@ -9,7 +9,7 @@ db/*.sqlite3
 .DS_Store
 .gems
 WEB-INF/appengine-generated/
-WEB-INF/lib/gems.jar
+WEB-INF/lib
 bin/rackup.bat
 bin/rails.bat
 bin/rake.bat
