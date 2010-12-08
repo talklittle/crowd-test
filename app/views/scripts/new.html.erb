@@ -14,6 +14,22 @@
     <%= f.text_area(:code, :cols => 80, :rows => 40) %>
   </p>
   <p>
+    <%= f.label :purpose %><br />
+    <%= f.text_field :purpose %>
+  </p>
+  <p>
+    <%= f.label :success_condition %><br />
+    <%= f.text_area(:success_condition, :cols => 80, :rows => 10) %>
+  </p>
+  <p>
+    <%= f.label :test_data %><br />
+    <%= f.text_area(:test_data, :cols => 80, :rows => 10) %>
+  </p>
+  <p>
+    <%= f.label :man_page %><br />
+    <%= f.text_area(:man_page, :cols => 80, :rows => 10) %>
+  </p>
+  <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>

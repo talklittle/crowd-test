@@ -7,6 +7,10 @@ class Script
   property :id,         Serial
   property :size_bytes, Integer,       :required => false
   property :code,       Blob,          :required => true
+  property :purpose,    String,        :required => true
+  property :success_condition, Blob,   :required => true
+  property :test_data,  Blob,          :required => false
+  property :man_page,   Blob,          :required => true
   property :upvote_user_ids, List
   timestamps :at 
 

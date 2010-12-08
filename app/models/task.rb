@@ -23,17 +23,17 @@ class Task
     self.tag_ids.each do |tag_id|
       tag = Tag.get(tag_id)
       has_match = false
-      for user.systems.each do |sys|
+      user.systems.each do |sys|
         if tag.systems.include?(sys)
           has_match = true
-          if not matching_types.include?(tag.type)
+          if !matching_types.include?(tag.type)
             matching_types << tag.type
             break
           end
         end
       end
       if has_match
-        num_matching += 1
+        num_matching = num_matching + 1
       end
     end
     return [matching_types.size, num_matching]

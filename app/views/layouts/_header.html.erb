@@ -1,5 +1,8 @@
 <div id="header" class="round">
-    <%= link_to image_tag("logo.png", :alt => "CrowdTest"), root_path %>
+    <span>
+        <%= link_to image_tag("logo.png", :alt => "CrowdTest", :width => 80, :height => 80), root_path %>
+        <b style="color:white;font-size:24pt">CrowdTest</b>
+    </span>
     <ul class="navigation round">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Tasks", tasks_path %></li>

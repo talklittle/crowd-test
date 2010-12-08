@@ -1,4 +1,33 @@
-<h1>Listing tasks</h1>
+<% if signed_in? %>
+  <h1>Relevant tasks</h1>
+
+  <table>
+    <tr>
+      <th>Tested</th>
+      <th>Expire date</th>
+      <th>Description</th>
+      <th>Duration minutes</th>
+      <th>Tags</th>
+    </tr>
+
+  <% current_user.relevant_tasks.each do |task| %>
+    <tr>
+      <td><%=h task.tested %></td>
+      <td><%=h task.expire_date %></td>
+      <td><%=h task.description %></td>
+      <td><%=h task.duration_minutes %></td>
+      <td><%=h task.tags %></td>
+      <td><%= link_to 'Show', task %></td>
+      <!-- <td><%= link_to 'Edit', edit_task_path(task) %></td> -->
+      <% if task.user == current_user %>
+        <td><%= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<h1>All tasks</h1>
 
 <table>
   <tr>

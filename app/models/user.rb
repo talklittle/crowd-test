@@ -23,6 +23,23 @@ class User
   has n, :comments
   has n, :test_outputs
 
+  def relevant_tasks
+    return Task.all
+    tasks = []
+    Task.all.each do |t|
+      tasks << [t, t.relevance(self.id)]
+    end
+    return_tasks = []
+    tasks.sort do |a, b|
+      res = a[1][0] <=> b[1][0]
+      res = a[1][1] <=> b[1][1] if res == 0
+    end
+    tasks.each do |t|
+      return_tasks << t[0]
+    end
+    return_tasks
+  end
+
   def password=(password)
     @password = password
   end

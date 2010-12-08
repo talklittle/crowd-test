@@ -18,6 +18,13 @@
   <%=h @script.num_upvotes %>
 </p>
 
+<p>
+<b>Comments:</b><br />
+<ul>
+  <li>Perfect! -- <b>0 upvotes</b></li>
+  <li>The collection part works if all Linux machines, but breaks when you add Windows -- <b>2 upvotes</b></li>
+</ul>
+
 <p id="upvote">
 <% if signed_in? %>
   <% if @script.upvoted?(current_user) %>

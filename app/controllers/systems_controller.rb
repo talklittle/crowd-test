@@ -41,6 +41,7 @@ class SystemsController < ApplicationController
   # POST /systems.xml
   def create
     @system = System.new(params[:system])
+    @system.user = current_user
 
     respond_to do |format|
       if @system.save

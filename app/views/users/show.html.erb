@@ -23,6 +23,27 @@
   <%=h @user.requester_score %>
 </p>
 
+<table>
+  <tr>
+    <th>Cpu mhz</th>
+    <th>Ram mbytes</th>
+    <th>Os</th>
+    <th>Tags</th>
+  </tr>
+
+<% @user.systems.each do |system| %>
+  <tr>
+    <td><%=h system.cpu_mhz %></td>
+    <td><%=h system.ram_mbytes %></td>
+    <td><%=h system.os %></td>
+    <td><%=h system.tags %></td>
+    <td><%= link_to 'Show', system %></td>
+    <td><%= link_to 'Edit', edit_system_path(system) %></td>
+    <td><%= link_to 'Destroy', system, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
