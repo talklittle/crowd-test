@@ -14,24 +14,29 @@ class Task
   belongs_to :user
   has n, :scripts
 
-  def relevant(user_id)
+  # Get the relevance scores [num_matching_types, num_matching]
+  def relevance(user_id)
     user = User.get(user_id)
     return [] if user.nil?
     matching_types = []
     num_matching = 0
     self.tag_ids.each do |tag_id|
       tag = Tag.get(tag_id)
-      # XXX
-      if tag.systems.include?(user.systems.ANYXXX)
+      has_match = false
+      for user.systems.each do |sys|
+        if tag.systems.include?(sys)
+          has_match = true
+          if not matching_types.include?(tag.type)
+            matching_types << tag.type
+            break
+          end
+        end
       end
-      if not matching_types.include?(tag.type)
-        matching_types << tag.type
+      if has_match
+        num_matching += 1
       end
     end
-
-
-
-
+    return [matching_types.size, num_matching]
   end
 
   def tags
