@@ -14,6 +14,25 @@ class Task
   belongs_to :user
   has n, :scripts
 
+  def relevant(user_id)
+    user = User.get(user_id)
+    return [] if user.nil?
+    matching_types = []
+    num_matching = 0
+    self.tag_ids.each do |tag_id|
+      tag = Tag.get(tag_id)
+      # XXX
+      if tag.systems.include?(user.systems.ANYXXX)
+      end
+      if not matching_types.include?(tag.type)
+        matching_types << tag.type
+      end
+    end
+
+
+
+
+  end
 
   def tags
     tagstr = ""

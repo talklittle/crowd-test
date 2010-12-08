@@ -10,4 +10,8 @@ class Tag
   def tasks
     Task.all(:tag_ids => id)
   end
+
+  def systems
+    System.all(:tag_ids => id)
+  end
 end
